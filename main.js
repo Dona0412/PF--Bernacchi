@@ -1,7 +1,7 @@
 const tasas = {
-  "USD Oficial": 368.60,
-  "USD Blue": 970,
-  "USD Turista": 735.76,
+  "USD Oficial": 348.96,
+  "USD Blue": 925,
+  "USD Turista": 487.50,
 };
 
 function obtenerCantidadAlmacenada() {
@@ -30,11 +30,11 @@ function guardarHistorial(conversion) {
   try {
     const historial = obtenerHistorial();
 
-    // Verificar si ya existe una entrada en el historial con la misma fecha y cantidad
+    
     const existeEntrada = historial.some(entry => 
       entry.fecha === conversion.fecha && entry.cantidad === conversion.cantidad);
 
-    // Si no existe una entrada con la misma fecha y cantidad, guardar la conversión
+
     if (!existeEntrada) {
       historial.push(conversion);
       localStorage.setItem('historial', JSON.stringify(historial));
@@ -69,7 +69,6 @@ function mostrarHistorial() {
     const historial = obtenerHistorial();
     const historyDiv = document.getElementById('history');
 
-    // Verificar si el elemento con id 'history' existe antes de modificar su innerHTML
     if (historyDiv) {
       historyDiv.innerHTML = "<p>Historial de Conversiones:</p>";
 
@@ -84,7 +83,7 @@ function mostrarHistorial() {
   }
 }
 
-// Eliminar el historial al cargar la página
+
 window.onload = function() {
   localStorage.removeItem('historial');
   mostrarHistorial();
